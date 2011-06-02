@@ -1,0 +1,64 @@
+<!-- 
+  *
+  *  Collection + View example. Shows how to bind a model/collection event to a view method.
+  *
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>hello-backbonejs</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js" type="text/javascript" charset="utf-8"></script>
+    
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+      //
+      // Classes
+      //
+      var MyCollection = Backbone.Collection.extend({});
+      var MyView = Backbone.View.extend({
+        el: $('body ul'), // attach to existing list
+        initialize: function(){
+          _.bindAll(this, 'showOne');          
+          this.collection.bind('add', this.showOne); // showOne() to be called upon every 'add' event in our collection
+        },
+        showOne: function(){
+          var part1 = _(this.collection.models).last().get('part1');
+          var part2 = _(this.collection.models).last().get('part2');
+          $(this.el).append('<li style="color:green;">'+part1+' '+part2+'</li>');
+        }
+      });
+
+      //
+      // Objects
+      //
+      var myCollection = new MyCollection();
+      var myView = new MyView({
+        collection: myCollection
+      });
+      
+      //
+      // Actions
+      //
+      setInterval(function(){
+        myCollection.add({ // add new model to our collection
+          part1: 'hello',
+          part2: 'world'
+        });
+      }, 1000);
+    });
+  </script>
+</head>
+
+<body>
+  <ul>    
+  </ul>
+</body>
+
+</html>

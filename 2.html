@@ -1,0 +1,59 @@
+<!-- 
+  *
+  *  This demo illustrates the use of the Backbone.View() and Backbone.Model() classes, 
+  *  working together
+  *
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>hello-backbonejs</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js" type="text/javascript" charset="utf-8"></script>
+    
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+      //
+      // Classes
+      //
+      var MyModel = Backbone.Model.extend({});
+      var MyView = Backbone.View.extend({
+        el: $('body'), // el attaches view to existing html element
+        initialize: function(){
+          _.bindAll(this, 'render'); // ensures methods like render() see "this" as the current object
+        },
+        render: function(){
+          $(this.el).append('<div style="color:red;">'+this.model.get('first')+' '+this.model.get('second')+'</div>'); // access model data
+          return this; // convention for chained calls
+        }
+      });
+
+      //
+      // Objects
+      //
+      var myModel = new MyModel({
+        first: 'hello',
+        second: 'world!'
+      });
+      var myView = new MyView({
+        model: myModel
+      });
+      
+      //
+      // Actions
+      //
+      myView.render();
+    });
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
