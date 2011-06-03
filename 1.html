@@ -1,6 +1,6 @@
 <!-- 
   *
-  *  This demo illustrates the use of the Backbone.View() class
+  *  Illustrates the use of the Backbone.View() class
   *
 -->
 
@@ -24,7 +24,8 @@
       var MyView = Backbone.View.extend({
         el: $('body'), // el attaches view to existing html element
         initialize: function(){
-          _.bindAll(this, 'render'); // ensures methods like render() see "this" as the current object
+          _.bindAll(this, 'render'); // Backbone makes heavy use of Underscore (_) functions, so we might as well use it too
+                                     // here _.bindAll() ensures methods like render() see "this" as the current object
         },
         render: function(){
           $(this.el).append('<div>hello world!</div>'); // append to body

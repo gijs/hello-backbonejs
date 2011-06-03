@@ -1,6 +1,6 @@
 <!-- 
   *
-  *  Collection + View example. Shows how to bind a model/collection event to a view method.
+  *  Shows how to bind a Collection event to a View method.
   *
 -->
 
@@ -29,7 +29,7 @@
           this.collection.bind('add', this.showOne); // showOne() to be called upon every 'add' event in our collection
         },
         showOne: function(){
-          var part1 = _(this.collection.models).last().get('part1');
+          var part1 = _(this.collection.models).last().get('part1'); // get data from last collection model (collection.models are arrays)
           var part2 = _(this.collection.models).last().get('part2');
           $(this.el).append('<li style="color:green;">'+part1+' '+part2+'</li>');
         }
