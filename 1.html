@@ -1,6 +1,8 @@
 <!-- 
   *
-  *  Illustrates the use of the Backbone.View() class
+  *
+  *  Minimalistic use of the View class
+  *
   *
 -->
 
@@ -11,9 +13,13 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>hello-backbonejs</title>
 
+  <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <!-- JSON2: offers cross-browser .parse() and .stringify(); mostly for Backbone.sync() -->
   <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js" type="text/javascript" charset="utf-8"></script>
+  <!-- Underscore utilities are widely used by Backbone -->
   <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js" type="text/javascript" charset="utf-8"></script>
+  <!-- Backbone -->
   <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js" type="text/javascript" charset="utf-8"></script>
     
   <script type="text/javascript" charset="utf-8">
@@ -24,12 +30,10 @@
       var MyView = Backbone.View.extend({
         el: $('body'), // el attaches view to existing html element
         initialize: function(){
-          _.bindAll(this, 'render'); // Backbone makes heavy use of Underscore (_) functions, so we might as well use it too
-                                     // here _.bindAll() ensures methods like render() see "this" as the current object
+          _.bindAll(this, 'render'); // Underscore function to ensure methods like render() see "this" as the current object
         },
         render: function(){
           $(this.el).append('<div>hello world!</div>'); // append to body
-          return this; // convention for chained calls
         }
       });
 

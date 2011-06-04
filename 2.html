@@ -1,7 +1,9 @@
 <!-- 
   *
-  *  Illustrates the use of the Backbone.View() and Backbone.Model() classes, 
-  *  working together
+  *
+  *  View and Model working together
+  *  - The View is for a single Model
+  *
   *
 -->
 
@@ -22,34 +24,36 @@
       //
       // Classes
       //
-      var MyModel = Backbone.Model.extend({});
-      var MyView = Backbone.View.extend({
+      var Item = Backbone.Model.extend({
+        defaults: {
+          first: 'hello',
+          second: 'world'
+        }
+      });
+      
+      var ItemView = Backbone.View.extend({
         el: $('body'), // el attaches view to existing html element
         initialize: function(){
-          _.bindAll(this, 'render'); // Backbone makes heavy use of Underscore (_) functions, so we might as well use it too
-                                     // here _.bindAll() ensures methods like render() see "this" as the current object
+          _.bindAll(this, 'render'); // Underscore function to ensure methods like render() see "this" as the current object
         },
         render: function(){
           $(this.el).append('<div style="color:red;">'+this.model.get('first')+' '+this.model.get('second')+'</div>'); // display model data
-          return this; // convention for chained calls
         }
       });
 
       //
       // Objects
       //
-      var myModel = new MyModel({
-        first: 'hello',
-        second: 'world!'
-      });
-      var myView = new MyView({
-        model: myModel
+      var item = new Item(); // use model defaults
+      
+      var itemView = new ItemView({
+        model: item
       });
       
       //
       // Actions
       //
-      myView.render();
+      itemView.render();
     });
   </script>
 </head>

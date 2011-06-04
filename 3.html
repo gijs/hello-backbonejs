@@ -1,6 +1,10 @@
 <!-- 
   *
-  *  Shows how to bind a Collection event to a View method.
+  *
+  *  Model, Collection, and View working together
+  *  - Shows how to bind a Collection event ('add') to a View method
+  *  - Illustrates use of a single View to render multiple Models of a Collection
+  *
   *
 -->
 
@@ -21,15 +25,27 @@
       //
       // Classes
       //
-      var MyCollection = Backbone.Collection.extend({});
-      var MyView = Backbone.View.extend({
+      var Item = Backbone.Model.extend({
+        defaults: {
+          part1: 'hello',
+          part2: 'world'
+        }
+      });
+      
+      var List = Backbone.Collection.extend({
+        model: Item
+      });
+      
+      var ListView = Backbone.View.extend({
         el: $('body ul'), // attach to existing list
         initialize: function(){
-          _.bindAll(this, 'showOne');          
-          this.collection.bind('add', this.showOne); // showOne() to be called upon every 'add' event in our collection
+          _.bindAll(this, 'appendLast');
+
+          // Model-View bindings happen here:
+          this.collection.bind('add', this.appendLast); // appendLast() to be called upon every 'add' event in our collection
         },
-        showOne: function(){
-          var part1 = _(this.collection.models).last().get('part1'); // get data from last collection model (collection.models are arrays)
+        appendLast: function(){
+          var part1 = _(this.collection.models).last().get('part1'); // gets data from last model (collection.models are arrays)
           var part2 = _(this.collection.models).last().get('part2');
           $(this.el).append('<li style="color:green;">'+part1+' '+part2+'</li>');
         }
@@ -38,25 +54,25 @@
       //
       // Objects
       //
-      var myCollection = new MyCollection();
-      var myView = new MyView({
-        collection: myCollection
+      var list = new List();
+      
+      var listView = new ListView({
+        collection: list
       });
       
       //
       // Actions
       //
-      setInterval(function(){
-        myCollection.add({ // add new model to our collection
-          part1: 'hello',
-          part2: 'world'
-        });
-      }, 1000);
+      $('button#add').click(function(){
+        var item = new Item();
+        list.add(item); // adds item to collection and fires 'add' event
+      });
     });
   </script>
 </head>
 
 <body>
+  <button id='add'>Add item</button>
   <ul>    
   </ul>
 </body>
