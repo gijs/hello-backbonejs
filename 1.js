@@ -4,7 +4,7 @@
 
 // jQuery's document ready function
 $(function(){
-  // **Class ListView**: This is the main view for our program.
+  // **ListView class**: This is the main view for our program.
   var ListView = Backbone.View.extend({    
     el: $('body'), // attaches `this.el` to an existing element.
     // `initialize()`: Automatically called upon instantiation. Where you make all types of bindings, _excluding_ UI events, such as clicks, etc.
@@ -19,6 +19,6 @@ $(function(){
     }
   });
 
-  // **Instance listView**: Instantiate main app view.
+  // **listView instance**: Instantiate main app view.
   var listView = new ListView();      
 });

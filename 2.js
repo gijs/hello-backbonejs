@@ -6,12 +6,12 @@
 $(function(){
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
-    // `events`: Where DOM events are bound to View methods.
+    // `events`: Where DOM events are bound to View methods. Backbone doesn't have a separate controller to handle such bindings; it all happens in a View.
     events: {
-      'click button#add': 'appendItem'
+      'click button#add': 'addItem'
     },
     initialize: function(){
-      _.bindAll(this, 'render', 'appendItem'); // every function that uses 'this' as the current object should be in here
+      _.bindAll(this, 'render', 'addItem'); // every function that uses 'this' as the current object should be in here
       
       this.counter = 0; // total number of items added thus far
       this.render();
@@ -20,8 +20,8 @@ $(function(){
       $(this.el).append("<button id='add'>Add list item</button>");
       $(this.el).append("<ul></ul>");
     },
-    // `appendItem()`: Custom function called via `click` event above.
-    appendItem: function(){
+    // `addItem()`: Custom function called via `click` event above.
+    addItem: function(){
       this.counter++;
       $('ul', this.el).append("<li>hello world"+this.counter+"</li>");
     }

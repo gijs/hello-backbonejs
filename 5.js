@@ -1,11 +1,14 @@
+// _Working example: [5.html](../5.html)._
+//
+// **This example introduces two new Model actions (swap and delete), illustrating how such actions can be handled within a Model's View.**
+
+//
 $(function(){
-  Backbone.sync = function(method, model, success, error){ // override persistence storage with dummy function
-    success();                                             // this enables use of Model.destroy() without raising an error
+  // `Backbone.sync`: Override persistence storage with dummy function. This enables use of `Model.destroy()` without raising an error.
+  Backbone.sync = function(method, model, success, error){ 
+    success();
   }
   
-  //
-  // Models
-  //      
   var Item = Backbone.Model.extend({
     defaults: {
       part1: 'hello',
@@ -17,30 +20,30 @@ $(function(){
     model: Item
   });
 
-  //
-  // Views
-  //
   var ItemView = Backbone.View.extend({
     tagName: 'li', // name of tag to be created        
+    // `ItemView`s now respond to two clickable actions for each `Item`: swap and delete.
     events: { 
-      // DOM events
       'click span.swap':  'swap',
-      'click span.delete': 'delete'
-    },
+      'click span.delete': 'remove'
+    },    
+    // `initialize()` now binds model changes/removals to the corresponding handlers below.
     initialize: function(){
-      _.bindAll(this, 'render', 'unrender', 'swap', 'delete'); // every function that uses 'this' as the current object should be in here
+      _.bindAll(this, 'render', 'unrender', 'swap', 'remove'); // every function that uses 'this' as the current object should be in here
 
-      // Model events
       this.model.bind('change', this.render);
       this.model.bind('remove', this.unrender);
     },
+    // `render()` now includes two extra `span`s corresponding to the actions swap and delete.
     render: function(){
       $(this.el).html('<span style="color:black;">'+this.model.get('part1')+' '+this.model.get('part2')+'</span> &nbsp; &nbsp; <span class="swap" style="font-family:sans-serif; color:blue; cursor:pointer;">[swap]</span> <span class="delete" style="cursor:pointer; color:red; font-family:sans-serif;">[delete]</span>');
       return this; // for chainable calls, like .render().el
     },
+    // `unrender()`: Makes Model remove itself from the DOM.
     unrender: function(){
       $(this.el).remove();
     },
+    // `swap()` will interchange an `Item`'s attributes. When the `.set()` model function is called, the event `change` will be triggered.
     swap: function(){
       var swaped = {
         part1: this.model.get('part2'), 
@@ -48,30 +51,31 @@ $(function(){
       };
       this.model.set(swaped);
     },
-    delete: function(){
-      this.model.destroy(); // destroy model (also remove it from collection)
+    // `remove()`: We use the method `destroy()` to remove a model from its collection. Normally this would also delete the record from its persistent storage, but we have overridden that (see above).
+    remove: function(){
+      this.model.destroy();
     }
   });
   
+  // Because the new features are intrinsic to each `Item`, there is no need to modify `ListView`.
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
     events: {
-      // DOM events
       'click button#add': 'addItem'
     },
     initialize: function(){
       _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here
       
+      this.collection = new List();
+      this.collection.bind('add', this.appendItem); // collection event binder
+
       this.counter = 0;
       this.render();
-      
-      // Model events
-      this.collection.bind('add', this.appendItem);
     },
     render: function(){
       $(this.el).append("<button id='add'>Add list item</button>");
       $(this.el).append("<ul></ul>");
-      _(this.collection.models).each(function(item){
+      _(this.collection.models).each(function(item){ // in case collection is not empty
         appendItem(item);
       }, this);
     },
@@ -91,11 +95,5 @@ $(function(){
     }
   });
 
-  //
-  // Instances
-  //
-  var list = new List();
-  var listView = new ListView({
-    collection: list
-  });      
+  var listView = new ListView();
 });

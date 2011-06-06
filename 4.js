@@ -1,7 +1,9 @@
+// _Working example: [4.html](../4.html)._
+//
+// **This example illustrates how to break down a View of Collections and Models into one View per Model.**
+
+//
 $(function(){
-  //
-  // Models
-  //      
   var Item = Backbone.Model.extend({
     defaults: {
       part1: 'hello',
@@ -13,9 +15,7 @@ $(function(){
     model: Item
   });
 
-  //
-  // Views
-  //
+  // **ItemView class**: Responsible for rendering each individual `Item`.
   var ItemView = Backbone.View.extend({
     tagName: 'li', // name of (orphan) root tag in this.el
     initialize: function(){
@@ -30,22 +30,21 @@ $(function(){
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
     events: {
-      // DOM events
       'click button#add': 'addItem'
     },
     initialize: function(){
       _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here
       
+      this.collection = new List();
+      this.collection.bind('add', this.appendItem); // collection event binder
+
       this.counter = 0;
       this.render();
-      
-      // Model events
-      this.collection.bind('add', this.appendItem);
     },
     render: function(){
       $(this.el).append("<button id='add'>Add list item</button>");
       $(this.el).append("<ul></ul>");
-      _(this.collection.models).each(function(item){
+      _(this.collection.models).each(function(item){ // in case collection is not empty
         appendItem(item);
       }, this);
     },
@@ -57,6 +56,7 @@ $(function(){
       });
       this.collection.add(item);
     },
+    // `appendItem()` is no longer responsible for rendering an individual `Item`. This is now delegated to the `render()` method of each `ItemView` instance.
     appendItem: function(item){
       var itemView = new ItemView({
         model: item
@@ -65,11 +65,5 @@ $(function(){
     }
   });
 
-  //
-  // Instances
-  //  
-  var list = new List();
-  var listView = new ListView({
-    collection: list
-  });      
+  var listView = new ListView();      
 });
