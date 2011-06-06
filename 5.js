@@ -4,7 +4,7 @@
 
 //
 $(function(){
-  // `Backbone.sync`: Override persistence storage with dummy function. This enables use of `Model.destroy()` without raising an error.
+  // `Backbone.sync`: Overrides persistence storage with dummy function. This enables use of `Model.destroy()` without raising an error.
   Backbone.sync = function(method, model, success, error){ 
     success();
   }
@@ -27,7 +27,7 @@ $(function(){
       'click span.swap':  'swap',
       'click span.delete': 'remove'
     },    
-    // `initialize()` now binds model changes/removals to the corresponding handlers below.
+    // `initialize()` now binds model change/removal to the corresponding handlers below.
     initialize: function(){
       _.bindAll(this, 'render', 'unrender', 'swap', 'remove'); // every function that uses 'this' as the current object should be in here
 
@@ -57,7 +57,7 @@ $(function(){
     }
   });
   
-  // Because the new features are intrinsic to each `Item`, there is no need to modify `ListView`.
+  // Because the new features (swap and delete) are intrinsic to each `Item`, there is no need to modify `ListView`.
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
     events: {

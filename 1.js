@@ -2,7 +2,7 @@
 //
 // **This example illustrates the declaration and instantiation of a View.**
 
-// jQuery's document ready function
+// jQuery's document-ready function
 $(function(){
   // **ListView class**: This is the main view for our program.
   var ListView = Backbone.View.extend({    

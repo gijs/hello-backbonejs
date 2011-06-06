@@ -22,7 +22,7 @@ $(function(){
     events: {
       'click button#add': 'addItem'
     },
-    // `initialize()` now instantiates a `List`, and binds its `add` event to own method `appendItem`. (Recall that Backbone doesn't have a separate Controller for bindings...).
+    // `initialize()` now instantiates a Collection, and binds its `add` event to own method `appendItem`. (Recall that Backbone doesn't offer a separate Controller for bindings...).
     initialize: function(){
       _.bindAll(this, 'render', 'addItem', 'appendItem'); // remember: every function that uses 'this' as the current object should be in here
       
