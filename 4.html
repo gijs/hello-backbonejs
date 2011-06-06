@@ -1,13 +1,3 @@
-<!-- 
-  *
-  *
-  *  Model-View and Collection-View pairs working together
-  *  - Illustrates how to separate the logic into one View for each item, and one View for the Collection of items
-  *  - Shows how to bind jQuery events to View methods
-  *  
-  *
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -20,86 +10,10 @@
   <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js" type="text/javascript" charset="utf-8"></script>
   <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js" type="text/javascript" charset="utf-8"></script>
     
-  <script type="text/javascript" charset="utf-8">
-    $(function(){
-      //
-      // Classes
-      //      
-      var Item = Backbone.Model.extend({
-        defaults: {
-          part1: 'hello',
-          part2: 'world'
-        }
-      });
-      
-      var List = Backbone.Collection.extend({
-        model: Item
-      });
-
-      var ItemView = Backbone.View.extend({
-        tagName: 'li', // name of tag to be created        
-        initialize: function(){
-          _.bindAll(this, 'render', 'swap'); // every function that uses 'this' as the current object should be in here!
-
-          // Model-View bindings happen here:
-          this.model.bind('change', this.render);
-        },
-        events: {
-          'click span.swap':  'swap' // jQuery event
-        },
-        render: function(){
-          $(this.el).html('<span style="color:black;">'+this.model.get('part1')+' '+this.model.get('part2')+'</span> &nbsp; &nbsp; <span class="swap" style="font-family:sans-serif; color:blue; cursor:pointer;">[swap]</span>');
-          return this; // for chainable calls, like .render().el
-        },
-        swap: function(){
-          var swaped = {
-            part1: this.model.get('part2'), 
-            part2: this.model.get('part1')
-          };
-          this.model.set(swaped);
-        }
-      });
-      
-      var ListView = Backbone.View.extend({
-        el: $('body ul'), // attach to existing list
-        initialize: function(){
-          _.bindAll(this, 'appendLast'); // every function that uses 'this' as the current object should be in here!
-
-          // Model-View bindings happen here:
-          this.collection.bind('add', this.appendLast);
-        },
-        appendLast: function(){
-          var itemView = new ItemView({
-            model: _(this.collection.models).last()
-          });
-          $(this.el).append(itemView.render().el); // append jQuery object
-        },
-      });
-
-      //
-      // Objects
-      //
-      var list = new List();
-      
-      var listView = new ListView({
-        collection: list
-      });
-      
-      //
-      // Actions
-      //
-      $('button#add').click(function(){
-        var item = new Item();
-        list.add(item);
-      });
-    });
-  </script>
+  <script src="4.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
-  <button id='add'>Add list item</button>
-  <ul>    
-  </ul>
 </body>
 
 </html>

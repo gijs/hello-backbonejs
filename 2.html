@@ -1,12 +1,3 @@
-<!-- 
-  *
-  *
-  *  View and Model working together
-  *  - The View is for a single Model
-  *
-  *
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -19,43 +10,7 @@
   <script src="http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js" type="text/javascript" charset="utf-8"></script>
   <script src="http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js" type="text/javascript" charset="utf-8"></script>
     
-  <script type="text/javascript" charset="utf-8">
-    $(function(){
-      //
-      // Classes
-      //
-      var Item = Backbone.Model.extend({
-        defaults: {
-          first: 'hello',
-          second: 'world'
-        }
-      });
-      
-      var ItemView = Backbone.View.extend({
-        el: $('body'), // el attaches view to existing html element
-        initialize: function(){
-          _.bindAll(this, 'render'); // Underscore function to ensure methods like render() see "this" as the current object
-        },
-        render: function(){
-          $(this.el).append('<div style="color:red;">'+this.model.get('first')+' '+this.model.get('second')+'</div>'); // display model data
-        }
-      });
-
-      //
-      // Objects
-      //
-      var item = new Item(); // use model defaults
-      
-      var itemView = new ItemView({
-        model: item
-      });
-      
-      //
-      // Actions
-      //
-      itemView.render();
-    });
-  </script>
+  <script src="2.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
