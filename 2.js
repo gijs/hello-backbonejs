@@ -16,6 +16,7 @@ $(function(){
       this.counter = 0; // total number of items added thus far
       this.render();
     },
+    // `render()` now introduces a button to add a new list item.
     render: function(){
       $(this.el).append("<button id='add'>Add list item</button>");
       $(this.el).append("<ul></ul>");
