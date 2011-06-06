@@ -46,8 +46,8 @@
     <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
       <span class="nx">_</span><span class="p">.</span><span class="nx">bindAll</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="s1">&#39;render&#39;</span><span class="p">,</span> <span class="s1">&#39;addItem&#39;</span><span class="p">,</span> <span class="s1">&#39;appendItem&#39;</span><span class="p">);</span> <span class="c1">// every function that uses &#39;this&#39; as the current object should be in here</span>
       
-      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// global item counter</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span> <span class="c1">// self-renders</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
       </pre></div>             </td>           </tr>                               <tr id="section-7">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-7">&#182;</a>               </div>               <p>Model events</p>             </td>             <td class="code">               <div class="highlight"><pre>      <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">appendItem</span><span class="p">);</span>
     <span class="p">},</span>
     <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
@@ -58,12 +58,12 @@
       <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
     <span class="p">},</span>
     <span class="nx">addItem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
       <span class="kd">var</span> <span class="nx">item</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Item</span><span class="p">();</span>
       <span class="nx">item</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
         <span class="nx">part2</span><span class="o">:</span> <span class="nx">item</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;part2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span> <span class="c1">// modify item defaults</span>
       <span class="p">});</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">collection</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">item</span><span class="p">);</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
     <span class="p">},</span>
     <span class="nx">appendItem</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">){</span>
       <span class="kd">var</span> <span class="nx">itemView</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ItemView</span><span class="p">({</span>

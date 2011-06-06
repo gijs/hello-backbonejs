@@ -62,8 +62,8 @@ $(function(){
     initialize: function(){
       _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here
       
-      this.counter = 1; // global item counter
-      this.render(); // self-renders
+      this.counter = 0;
+      this.render();
       
       // Model events
       this.collection.bind('add', this.appendItem);
@@ -76,12 +76,12 @@ $(function(){
       }, this);
     },
     addItem: function(){
+      this.counter++;
       var item = new Item();
       item.set({
         part2: item.get('part2') + this.counter // modify item defaults
       });
       this.collection.add(item);
-      this.counter++;
     },
     appendItem: function(item){
       var itemView = new ItemView({

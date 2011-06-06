@@ -1,31 +1,31 @@
+// _Working example: [2.html](../2.html)._
+//
+// **This example illustrates the binding of DOM events to View methods.**
+
+//
 $(function(){
-  //
-  // Classes
-  //      
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
+    // `events`: Where DOM events are bound to View methods.
     events: {
-      // DOM events
       'click button#add': 'appendItem'
     },
     initialize: function(){
       _.bindAll(this, 'render', 'appendItem'); // every function that uses 'this' as the current object should be in here
       
-      this.counter = 1;
-      this.render(); // self-renders
+      this.counter = 0; // total number of items added thus far
+      this.render();
     },
     render: function(){
       $(this.el).append("<button id='add'>Add list item</button>");
       $(this.el).append("<ul></ul>");
     },
+    // `appendItem()`: Custom function called via `click` event above.
     appendItem: function(){
-      $('ul', this.el).append("<li>hello world"+this.counter+"</li>");
       this.counter++;
+      $('ul', this.el).append("<li>hello world"+this.counter+"</li>");
     }
   });
 
-  //
-  // Instances
-  //
   var listView = new ListView();      
 });

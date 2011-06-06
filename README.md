@@ -1,8 +1,4 @@
 # Hello Backbone.js Tutorial
 _Hello World examples of increasing complexity for [Backbone.js](https://github.com/documentcloud/backbone)._
 
-This tutorial is a collection of minimalistic, self-explanatory examples illustrating the use of Backbone.js. It was created to provide a smoother transition from zero to the infamous [Todo example](http://documentcloud.github.com/backbone/docs/todos.html).
-
-The example numbers are in order of increasing complexity. If a pattern or method call is not commented, it is probably because it is already well-documented in the [Backbone.js documentation](http://documentcloud.github.com/backbone/).
-
-Have fun!
+This is a work in progress. Come back soon! :)
