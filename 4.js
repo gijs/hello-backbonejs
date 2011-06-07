@@ -1,4 +1,4 @@
-// **This example illustrates how to delegate the rendering of a Model to a separate View from its Collection.**
+// **This example illustrates how to delegate the rendering of a Model to a View separate from its Collection View.**
 //
 // _Working example: [4.html](../4.html)._  
 // _[Go to Example 5](5.html)_
