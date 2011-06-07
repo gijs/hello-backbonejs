@@ -1,7 +1,7 @@
+// **This example illustrates the binding of DOM events to View methods.**
+//
 // _Working example: [2.html](../2.html)._  
 // _[Go to Example 3](3.html)_
-//
-// **This example illustrates the binding of DOM events to View methods.**
 
 //
 $(function(){

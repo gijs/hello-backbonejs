@@ -1,6 +1,6 @@
-// _Working example: [5.html](../5.html)._
-//
 // **This example introduces two new Model actions (swap and delete), illustrating how such actions can be handled within a Model's View.**
+//
+// _Working example: [5.html](../5.html)._
 
 //
 $(function(){

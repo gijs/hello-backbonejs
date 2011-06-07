@@ -1,7 +1,7 @@
+// **This example illustrates how to break down a View of Collections and Models into one View per Model.**
+//
 // _Working example: [4.html](../4.html)._  
 // _[Go to Example 5](5.html)_
-//
-// **This example illustrates how to break down a View of Collections and Models into one View per Model.**
 
 //
 $(function(){
