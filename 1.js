@@ -1,11 +1,11 @@
-// **This example illustrates the declaration and instantiation of a View.**
+// **This example illustrates the declaration and instantiation of a minimalist View.**
 //
 // _Working example: [1.html](../1.html)._  
 // _[Go to Example 2](2.html)_
 
 // jQuery's document-ready function
 $(function(){
-  // **ListView class**: This is the main view for our program.
+  // **ListView class**: Our main app view.
   var ListView = Backbone.View.extend({    
     el: $('body'), // attaches `this.el` to an existing element.
     // `initialize()`: Automatically called upon instantiation. Where you make all types of bindings, _excluding_ UI events, such as clicks, etc.
