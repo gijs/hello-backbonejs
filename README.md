@@ -4,3 +4,5 @@
 
 See it in action:  
 http://arturadib.github.com/hello-backbonejs/
+
+_Contributions are welcome!_
