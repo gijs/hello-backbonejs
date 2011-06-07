@@ -1,4 +1,5 @@
-// _Working example: [3.html](../3.html)._
+// _Working example: [3.html](../3.html)._  
+// _[Go to Example 4](4.html)_
 //
 // **This example illustrates how to use a Collection of Models to store data, and how to tie changes in those to a View.**
 
