@@ -1,4 +1,4 @@
-// **This example illustrates how to break down a View of Collections and Models into one View per Model.**
+// **This example illustrates how to delegate the rendering of a Model to a separate View from its Collection.**
 //
 // _Working example: [4.html](../4.html)._  
 // _[Go to Example 5](5.html)_
