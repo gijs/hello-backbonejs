@@ -45,11 +45,11 @@ $(function(){
     },
     // `swap()` will interchange an `Item`'s attributes. When the `.set()` model function is called, the event `change` will be triggered.
     swap: function(){
-      var swaped = {
+      var swapped = {
         part1: this.model.get('part2'), 
         part2: this.model.get('part1')
       };
-      this.model.set(swaped);
+      this.model.set(swapped);
     },
     // `remove()`: We use the method `destroy()` to remove a model from its collection. Normally this would also delete the record from its persistent storage, but we have overridden that (see above).
     remove: function(){
