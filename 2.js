@@ -4,7 +4,7 @@
 // _[Go to Example 3](3.html)_
 
 //
-$(function(){
+(function($){
   var ListView = Backbone.View.extend({
     el: $('body'), // el attaches to existing element
     // `events`: Where DOM events are bound to View methods. Backbone doesn't have a separate controller to handle such bindings; it all happens in a View.
@@ -30,4 +30,4 @@ $(function(){
   });
 
   var listView = new ListView();      
-});
+})(jQuery);
