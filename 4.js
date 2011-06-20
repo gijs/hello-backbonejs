@@ -4,7 +4,7 @@
 // _[Go to Example 5](5.html)_
 
 //
-$(function(){
+(function($){
   var Item = Backbone.Model.extend({
     defaults: {
       part1: 'hello',
@@ -67,4 +67,4 @@ $(function(){
   });
 
   var listView = new ListView();      
-});
+})(jQuery);

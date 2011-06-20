@@ -4,7 +4,7 @@
 // _[Go to Example 4](4.html)_
 
 //
-$(function(){
+(function($){
   // **Item class**: The atomic part of our Model. A model is basically a Javascript object, i.e. key-value pairs, with some helper functions to handle event triggering, persistence, etc.
   var Item = Backbone.Model.extend({
     defaults: {
@@ -56,4 +56,4 @@ $(function(){
   });
 
   var listView = new ListView();
-});
+})(jQuery);
