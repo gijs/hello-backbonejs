@@ -3,7 +3,7 @@
 // _Working example: [1.html](../1.html)._  
 // _[Go to Example 2](2.html)_
 
-// jQuery's document-ready function
+// Self-executing wrapper
 (function($){
   // **ListView class**: Our main app view.
   var ListView = Backbone.View.extend({    
