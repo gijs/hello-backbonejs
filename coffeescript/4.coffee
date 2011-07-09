@@ -9,7 +9,17 @@ class Item extends Backbone.Model
 class List extends Backbone.Collection
 	model: Item
 
-#### Backbone view class
+#### Backbone views
+class ItemView extends Backbone.View
+	tagName: 'li'
+
+	initialize: ->
+		# pass
+	
+	render: ->
+		$(@el).html("<span>#{@model.get('part1')} #{@model.get('part2')}</span>")
+		return @ #aka return this `ItemView`
+
 class ListView extends Backbone.View
 	# The base element to start rendering on.
 	el: $("body")
@@ -25,8 +35,7 @@ class ListView extends Backbone.View
 		@counter = 0
 		@render()
 		
-		# The element to append on which doesn't we can't get till after a
-		# call to `render()`.
+		# The element to append on.
 		@display_tag = $("ul")
 		
 	# Events bound to this view.
@@ -67,9 +76,13 @@ class ListView extends Backbone.View
 		# Add item to collection.
 		@collection.add(item)
 
-	#Append an item to the list. Fat arrow needed to access @display_tag.
+	# Append an item by creating a new `ItemView` and setting it's model
+	# property.
 	appendItem: (item) =>
-		@display_tag.append("<li>#{item.get('part1')} #{item.get('part2')}</li>")
+		item_view = new ItemView( {model: item} )
+
+		# Render returns an ItemView object
+		@display_tag.append(item_view.render().el)
 
 
 # This is the jQuery ready object, init happens here.

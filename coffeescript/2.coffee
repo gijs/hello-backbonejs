@@ -4,13 +4,13 @@ class window.ListView extends Backbone.View
 	# The base element to start rendering on.
 	el: $("body")
 
-	# The element to append on.
-	display_tag: $("body")
-
 	# Is called upon class instantiation.
 	initialize: ->
 		@counter = 0
 		@render()
+
+		# The element to append on.
+		@display_tag = $("ul")
 		
 	# Events bound to this view.
 	# "event htmlObject.class#id" : "function_name()"
