@@ -1,5 +1,5 @@
 
-# A backbone view class
+#### Backbone view class
 class window.ListView extends Backbone.View
 	# The base element to start rendering on.
 	el: $("body")
@@ -7,25 +7,25 @@ class window.ListView extends Backbone.View
 	# The element to append on.
 	display_tag: $("body")
 
-	# Is called upon class instantiation
+	# Is called upon class instantiation.
 	initialize: ->
 		@counter = 0
 		@render()
 		
-	# Events bound to this view
+	# Events bound to this view.
 	# "event htmlObject.class#id" : "function_name()"
 	events:
 		"click button#add": "addItem"
 	
 	# A rendering function we defined.
 	render: ->
-		# Dom appending a button
+		# Dom appending a button.
 		@el.append("<button id='add'>Add list item</button>")
 
-		# Dom appending a list
+		# Dom appending a list.
 		@el.append("<ul></ul>")
 	
-	# Event Functions
+	### Event Functions. ##
 	addItem: ->
 		# Increment counter and append to display_tag
 		@counter++
