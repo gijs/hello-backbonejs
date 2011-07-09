@@ -4,8 +4,9 @@
 
 ## Flavours ##
 Hello Backbone comes in different flavours. You can see the code in their respective directories. Currently offered are:
+
 1. js - Pure JavaScript implementation.
-2. coffeescript - [CoffeeScript]() implementation.
+1. coffeescript - [CoffeeScript]() implementation.
 
 ## Compile Docs ##
 Use Docco like so:
