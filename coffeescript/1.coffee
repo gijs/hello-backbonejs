@@ -11,10 +11,9 @@ class ListView extends Backbone.View
 	# A rendering function we defined.
 	render: =>
 		# Just a simple dom append
-		$(@el).append("<ul> <li>Hello World</li> </ul>")
+		@el.append("<ul> <li>Hello World</li> </ul>")
 
 # This is the jQuery ready object, init happens here.
 $ ->
-	console.log("Init.")
-	listView = new ListView()
+	list_view = new ListView()
 	
