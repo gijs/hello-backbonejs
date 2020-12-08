@@ -1,80 +1,112 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>
-      Hello Backbone.js Tutorial
-    </title>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" media="all" href="docs/docco.css" type="text/css">
-  </head>
-  <body>    
-    <div id="container">
-      <div id="background"></div>
-      <table cellpadding="0" cellspacing="0">
-        <thead>
-          <tr>
-            <th class="docs">
-              <h1>
-                Hello Backbone.js
-              </h1>
-            </th>
-            <th class="code"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr id="section-1">
-            <td class="docs">
-              <p>
-                <strong>Hello Backbone</strong> is a simple <a href="http://documentcloud.github.com/backbone">Backbone.js</a> tutorial comprised of self-explanatory "hello world" examples of increasing complexity. It was designed to provide a smoother transition from zero to the popular <a href="http://documentcloud.github.com/backbone/docs/todos.html">Todos example</a>. 
-              </p>
+<head>
+  <title>
+    Hello Backbone.js Tutorial
+  </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="coffeescript/docs/docco.css">
+<script>
+  if (window.location.href.search(/\?x/) < 0) {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-924459-7']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  }
+</script>
+</head>
 
-              <p>
-                Backbone.js offers a lean <a href='http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC framework</a> for organizing your Javascript application. It leads to more maintainable code by untangling the "spaghetti" of callbacks tied to different parts of the DOM and the backend server that often arises in rich client-side applications.
-              </p>
-              
-              <p>
-                The tutorial starts with a minimalist View object, and progressively introduces event binding/handling, Models, and Collections.
-              </p>
-              
-              <p style='background:#ffffaa; padding:10px; text-align:center;'>
-                <a href='docs/1.html' style='color:blue;'>Click here</a> to start the tutorial.
-              </p>
-              <p>
-                Once in the tutorial, use the navigation menu in the top-right corner to view other examples. Example numbers are in order of increasing complexity.
-              </p>
-            </td>
-            <td class="code">
-              <p style='color:black;'>
-                The only non-Javascript part of the examples is the following HTML template:
-              </p>
-              <pre style='color:#777;'>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+<body>
+  <div id="container">
+    <div id="background"></div>
+    <table cellpadding="0" cellspacing="0">
+      <thead>
+        <tr>
+          <th class="docs">
+            <h1>
+              Hello Backbone.js
+            </h1>
+          </th>
+          <th class="code"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="section-1">
+          <td class="docs">
+            <p>
+              <strong>Hello Backbone</strong> is a simple <a href="http://documentcloud.github.com/backbone">Backbone.js</a> tutorial comprised of self-explanatory "hello world" examples of increasing complexity. It was designed to provide a smoother transition from zero to the popular <a href="http://documentcloud.github.com/backbone/#examples-todos">Todos example</a>.
+            </p>
 
-&lt;head&gt;
-  &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
-  &lt;title&gt;hello-backbonejs&lt;/title&gt;
+            <p>
+              Backbone.js offers a lean <a href='http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC framework</a> for organizing your Javascript application. It leads to more maintainable code by untangling the "spaghetti" of callbacks tied to different parts of the DOM and the backend server that often arises in rich client-side applications.
+            </p>
 
-  &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;http://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-  &lt;script src=&quot;http://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-    
-  &lt;script src=&quot;...number.js...&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;  
-&lt;/head&gt;
+            <p>
+              The tutorial starts with a minimalist View object, and progressively introduces event binding/handling, Models, and Collections.
+            </p>
 
-&lt;body&gt;
-&lt;/body&gt;
+            <p style='background:#ffffaa; padding:10px; text-align:center;'>
+              <a href='js/docs/1.html' style='color:blue;'>Click here</a> to start the JavaScript tutorial.
+            </p>
 
-&lt;/html&gt;                
-              </pre>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <p style='background:orange; padding:10px; text-align:center;'>
+              <a href='coffeescript/docs/1.html' style='color:blue;'>Click here</a> to start the CoffeeScript tutorial.
+            </p>
 
-<a href="https://github.com/arturadib/hello-backbonejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+            <p>
+              Once in the tutorial, use the navigation menu in the top-right corner to view other examples. Example numbers are in order of increasing complexity.
+            </p>
 
-  </body>
+            <p>&nbsp;</p>
+
+            <p>
+              Contributions:
+            </p>
+
+              CoffeeScript section by Jason Giedymin [ <a href="http://jasongiedymin.com">jasongiedymin.com</a> | <a href="http://twitter.com/jasongiedymin">@jasongiedymin</a> ]
+
+            <p>&nbsp;</p>
+
+            <p>
+              Original Author:
+            </p>
+
+            <p>
+              Copyright &copy; Artur Adib [ <a href="http://arturadib.com">arturadib.com</a> | <a href="http://twitter.com/arturadib">@arturadib</a> ]
+            </p>
+          </td>
+          <td class="code">
+            <p style='color:black;'>
+              The only non-Javascript part of the examples is the following HTML template:
+            </p>
+            <pre style='color:#777;'>
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;hello-backbonejs&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://ajax.cdnjs.com/ajax/libs/underscore.js/1.1.6/underscore-min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://ajax.cdnjs.com/ajax/libs/backbone.js/0.3.3/backbone-min.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;...number.js...&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+            </pre>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<a href="https://github.com/JasonGiedymin/hello-backbonejs"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://gs1.wac.edgecastcdn.net/80460E/assets/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+
+</body>
 </html>

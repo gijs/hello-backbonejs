@@ -3,8 +3,8 @@
 // _Working example: [1.html](../1.html)._  
 // _[Go to Example 2](2.html)_
 
-// jQuery's document-ready function
-$(function(){
+// Self-executing wrapper
+(function($){
   // **ListView class**: Our main app view.
   var ListView = Backbone.View.extend({    
     el: $('body'), // attaches `this.el` to an existing element.
@@ -22,4 +22,4 @@ $(function(){
 
   // **listView instance**: Instantiate main app view.
   var listView = new ListView();      
-});
+})(jQuery);

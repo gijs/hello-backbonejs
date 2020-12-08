@@ -3,7 +3,7 @@
 // _Working example: [5.html](../5.html)._
 
 //
-$(function(){
+(function($){
   // `Backbone.sync`: Overrides persistence storage with dummy function. This enables use of `Model.destroy()` without raising an error.
   Backbone.sync = function(method, model, success, error){ 
     success();
@@ -45,11 +45,11 @@ $(function(){
     },
     // `swap()` will interchange an `Item`'s attributes. When the `.set()` model function is called, the event `change` will be triggered.
     swap: function(){
-      var swaped = {
+      var swapped = {
         part1: this.model.get('part2'), 
         part2: this.model.get('part1')
       };
-      this.model.set(swaped);
+      this.model.set(swapped);
     },
     // `remove()`: We use the method `destroy()` to remove a model from its collection. Normally this would also delete the record from its persistent storage, but we have overridden that (see above).
     remove: function(){
@@ -96,4 +96,4 @@ $(function(){
   });
 
   var listView = new ListView();
-});
+})(jQuery);
